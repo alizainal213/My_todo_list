@@ -9,6 +9,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AlertDialog;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.support.design.widget.NavigationView;
@@ -23,6 +24,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.alizainal213.my_todo_list.Database.MyDatabaseHelper;
+import com.example.alizainal213.my_todo_list.model.Todo;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -62,12 +64,12 @@ public class MainActivity extends AppCompatActivity
         AlertDialog.Builder alertDialogInput = new AlertDialog.Builder(this);
         alertDialogInput.setView(view);
         //inisialisasi komponen dalam dialog
-        EditText edInnama = view.findViewById(R.id.edInNama);
-        EditText edInDesk = view.findViewById(R.id.edInDesk);
+        final EditText edInnama = view.findViewById(R.id.edInNama);
+        final EditText edInDesk = view.findViewById(R.id.edInDesk);
         TextView txtInTitle = view.findViewById(R.id.txtInTitle);
-
+        //mengatur judul dialog
         txtInTitle.setText("New Todo");
-
+        //membuat tombol dialog
         alertDialogInput
                 .setCancelable(false)
                 .setPositiveButton("Simpan", new DialogInterface.OnClickListener() {
@@ -82,7 +84,31 @@ public class MainActivity extends AppCompatActivity
 
                     }
                 });
+        //memasang tombol ke alert dialog
+        final AlertDialog alertDialog = alertDialogInput.create();
+        alertDialog.show();
+
+        alertDialog.getButton(AlertDialog.BUTTON_POSITIVE).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //cek apakah kode kosong
+                if (TextUtils.isEmpty(edInnama.getText().toString())){
+                    edInnama.setError("Nama tidak boleh kosong");
+                    edInnama.requestFocus();
+                }else if (TextUtils.isEmpty(edInDesk.getText().toString())) {
+                    edInDesk.setError("Deksripsi tidak boleh kosong");
+                    edInDesk.requestFocus();
+                } else {
+                    alertDialog.dismiss();
+                }
+
+                //simpan data ke database
+                 myDatabaseHelper.simpandata(edInnama.getText().toString(),edInDesk.getText().toString(), "todo");
+            }
+        });
     }
+
+
 
     @Override
     public void onBackPressed() {
