@@ -15,4 +15,17 @@
     <string name="btn_send">btnsend</string>
     <string name="subject_kosong">subjectkosong</string>
     <string name="email_tujuan_kosong">emailtujuankosong</string>
+
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="lbl_title">Give Your Feedback</string>
+    <string name="hint_enter_feedback">Enter feedback</string>
+    <string name="kategori">kategori</string>
+    <string-array name="itemkategori">
+
+        <item>Todo</item>
+        <item>Progrese</item>
+        <item>Done</item>
+
+    </string-array>
 </resources>

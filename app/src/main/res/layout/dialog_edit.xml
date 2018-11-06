@@ -6,7 +6,7 @@
     android:padding="@dimen/activity_horizontal_margin">
 
     <TextView
-        android:id="@+id/txtInTitle"
+        android:id="@+id/txtEnTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/app_name"
@@ -15,7 +15,7 @@
         android:textSize="20sp"/>
 
     <EditText
-        android:id="@+id/edInNama"
+        android:id="@+id/edENama"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="10dp"
@@ -25,7 +25,7 @@
         android:textSize="20sp"/>
 
     <EditText
-        android:id="@+id/edInDesk"
+        android:id="@+id/edEDesk"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@android:color/transparent"
@@ -34,5 +34,17 @@
     android:inputType="textMultiLine"
     android:lines="4"
     android:textSize="20sp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/kategori"/>
+
+    <Spinner
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/spedit"
+        android:entries="@array/itemkategori">
+    </Spinner>
 
 </LinearLayout>

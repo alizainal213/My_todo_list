@@ -62,8 +62,8 @@ public class Todo {
         this.deskripsi = deskripsi;
     }
 
-    public String getWaktu() {
-        return waktu;
+    public static String getWaktu() {
+        return getWaktu();
     }
 
     public void setWaktu(String waktu) {
